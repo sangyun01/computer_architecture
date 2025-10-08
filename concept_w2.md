@@ -58,7 +58,7 @@
 
 ## 🔸 ISA (Instruction Set Architecture)
 
-- **정의**: Hardware와 Low-level Software 간의 인터페이스
+- **정의**: Hardware와 Low-level Software 간의 인터페이스  
 - **특징**
   - 매우 중요한 **추상화(abstraction)** 계층
   - 하드웨어 세부구조를 몰라도 소프트웨어 작성 가능
@@ -75,8 +75,7 @@
 
 > **IC(집적회로) 용량은 18~24개월마다 약 2배로 증가한다.**
 
-- 1~2년 주기로 트랜지스터 수가 2배 → 성능 2배, 비용 절반
-- 반도체 발전 속도를 나타내는 경험적 법칙
+- 1~2년 주기로 트랜지스터 수가 2배 → 성능 2배, 비용 절반  
 
 ---
 
@@ -88,22 +87,26 @@
 | **Latency** | 지연 시간 |
 | **Execution time** | 실제 실행 시간 |
 
-\[
-\text{Response time} = \text{Latency} + \text{Execution time}
-\]
+$$
+\text{Response Time} = \text{Latency} + \text{Execution Time}
+$$
 
 - 성능은 **실행시간이 짧을수록** 좋음  
-  → \[
-  \text{Performance} = \frac{1}{\text{Execution time}}
-  \]
+
+$$
+\text{Performance} = \frac{1}{\text{Execution Time}}
+$$
 
 ### 프로세스 간 비교
-\[
-\frac{Performance_A}{Performance_B} = \frac{Execution_B}{Execution_A} = n
-\]
-- n < 1 → B가 (1/n)배 더 성능이 좋다.  
-- n = 1 → 성능 동일  
-- n > 1 → A가 n배 더 성능이 좋다.
+
+$$
+\frac{\text{Performance}_X}{\text{Performance}_Y}
+= \frac{\text{Execution Time}_Y}{\text{Execution Time}_X}
+$$
+
+- \( n < 1 \): Y가 (1/n)배 더 성능이 좋다.  
+- \( n = 1 \): 두 프로세스의 성능이 동일하다.  
+- \( n > 1 \): X가 n배 더 성능이 좋다.
 
 ---
 
@@ -113,33 +116,42 @@
 |------|------|------|
 | **Elapsed Time** | 시스템 관점 | 프로그램 시작~종료까지 전체 시간 |
 | **CPU Time** | CPU 관점 | CPU가 실제 처리한 시간 |
-|  |  | \[
-CPU\ Time = User\ CPU\ Time + System\ CPU\ Time
-\] |
+|  |  | $$ CPU\ Time = \text{User CPU Time} + \text{System CPU Time} $$ |
 
 따라서,
-\[
-Response\ Time = Latency + User\ CPU\ Time + System\ CPU\ Time
-\]
+
+$$
+\text{Response Time} = \text{Latency} + \text{User CPU Time} + \text{System CPU Time}
+$$
 
 ---
 
 ## 🔸 CPU Time 계산
 
 ### Clock 개념
+
 | 항목 | 단위 | 관계 |
 |------|------|------|
 | **Clock Frequency (Clock Rate)** | [Hz] | \( f = \frac{1}{T} \) |
 | **Clock Period** | [s] | \( T = \frac{1}{f} \) |
 
 ### CPU Time 계산식
-\[
-CPU\ Time = CPU\ Clock\ Cycles \times Clock\ Cycle\ Time = \frac{CPU\ Clock\ Cycles}{Clock\ Frequency}
-\]
 
-\[
-Response\ Time = Latency + CPU\ Clock\ Cycles \times Clock\ Cycle\ Time + System\ CPU\ Time
-\]
+$$
+\text{CPU Time} = \text{CPU Clock Cycles} \times \text{Clock Cycle Time}
+$$
+
+또는
+
+$$
+\text{CPU Time} = \frac{\text{CPU Clock Cycles}}{\text{Clock Frequency}}
+$$
+
+따라서,
+
+$$
+\text{Response Time} = \text{Latency} + \text{CPU Clock Cycles} \times \text{Clock Cycle Time} + \text{System CPU Time}
+$$
 
 ---
 
@@ -147,19 +159,22 @@ Response\ Time = Latency + CPU\ Clock\ Cycles \times Clock\ Cycle\ Time + System
 
 - 명령어 1개를 실행하는 데 필요한 평균 클록 사이클 수  
 - 예: `mul` 명령어의 CPI = 4  
-- \[
-CPU\ Clock\ Cycles = CPI \times Instructions
-\]
+
+$$
+\text{CPU Clock Cycles} = \text{CPI} \times \text{Instructions}
+$$
 
 여러 명령어의 합은 **superposition**으로 더할 수 있다.  
-\[
-Average\ CPI = \frac{Total\ CPI}{Instructions}
-\]
+
+$$
+\text{Average CPI} = \frac{\text{Total CPI}}{\text{Instructions}}
+$$
 
 따라서,
-\[
-Response\ Time = Latency + CPI \times Instructions \times Clock\ Cycle\ Time + System\ CPU\ Time
-\]
+
+$$
+\text{Response Time} = \text{Latency} + \text{CPI} \times \text{Instructions} \times \text{Clock Cycle Time} + \text{System CPU Time}
+$$
 
 ---
 
@@ -167,11 +182,11 @@ Response\ Time = Latency + CPI \times Instructions \times Clock\ Cycle\ Time + S
 
 > 초당 실행 가능한 명령어 수 (단위: 백만 개, Million)
 
-\[
-MIPS = \frac{Instructions}{Execution\ Time \times 10^6}
-\]
+$$
+\text{MIPS} = \frac{\text{Instructions}}{\text{Execution Time} \times 10^6}
+$$
 
-- CPU가 1초에 몇 백만 개의 명령어를 처리할 수 있는지를 나타냄.
+- CPU가 1초에 몇 백만 개의 명령어를 처리할 수 있는지를 나타냄.  
 - 값이 높을수록 일반적으로 빠르지만, ISA별 명령 복잡도에 따라 실제 성능 비교에는 한계가 있음.
 
 ---
