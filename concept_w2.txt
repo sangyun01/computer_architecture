@@ -1,0 +1,80 @@
+** APP ↔ System Software(OS) ↔ HW의 관계를 가진다.
+이때 System Software에는 2개로 나누어진다.
+    - Compiler : Translates HLL code to machine code → HLL code(ex. C언어)를 machine code(ex. binary code)로 바꾼다. (GCC)
+    - Operating System : Service code (GNN)
+        Handling input/output
+        Managing memory and storage
+        Schedilling tasks & sharing resources
+        암기 -> OS는 Handling, Managing, Schedilling -> 즉, 복잡한 것들은 OS에서 다 처리한다.
+
+** Components of Computer
+Input / output
+    - User-interfaces devices : 키보드나 마우스와 같은 입력
+    - Storage devices : 저장 장소 -> Disk(SSD, HDD)에서 Memory로 나가므로
+    - Network adapters : 통신 영역
+
+Memory
+    - Primary(Main) Memory : RAM (Random Access Memory, Volatile memory)
+        CPU가 직접 접근하는 memory로 휘발성(Volatile)을 가진다. -> DRAM
+    - Secondary Memory
+        보조기억장치로 비휘발성이지만, 접근속도가 느리고, CPU가 직접 접근이 불가하여, 필요한 file의 Disk -> RAM으로 Load하여 data를 이용한다. -> SSD, HDD
+    - Cache Memory
+        휘발성이며, 자주 쓰는 data를 CPU 내부 혹은 근처에 저장하여 RAM 대신 사용하여 작업 속도를 증가시킨다.
+    - ROM
+        BIOS, 즉 전원을 키면서 CPU가 동작하기 전, 부팅에 필요한 최소 데이터만 저장해두는 비휘발성 메모리
+
+Processor (CPU)
+    - Datapath : Actual Data Processing (실제 데이터 연산이 수행되는 장소)
+        Components : ALU, Registers, MUX, Buses
+    - Control Unit : Directs operation of datapath by interpreting the instructions fetched from memory and generate contorl signals
+    요약 : CPU에 들어온 명령어를 control Unit에서 명령어를 decode하고 이 명령어에 대해 Data Path에서 산술 연산이나 논리 연산, 데이터 저장 등을 수행한다.
+
+ISA (Instruction Set Architecture) - 명령어 집합 구조
+    - Interface between hardware and low-level software 
+        HW와 LLS 사이에서 통신을 해주는 역할
+    - Very important abstraction
+        HW의 동작을 이해하기 쉽게 추상화(abstraction)의 개념을 사용하여, 사용자가 이해하기 쉽게 도와줌
+    - Allowing developers to write software without needing to understand detailed inner working of the hardware
+        위에 같이 설명
+    - Portability : Hardware can evolve without requiring change in the Software
+        ex) x86 version의 word, excel은 MAC, Window 다 돌아감 -> Portability,  한글은 MAC이 ARM이라서 따로 설치해야함 -> Portability X
+    - Contract of how instructions are executed, what registers are available, how data is accessed and manipulated.
+        규약 지키자.
+
+Moore's Law : IC capacity doubles every 18-24
+    1~2년 단위로 IC칩의 용량이 2배 정도로 증가한다.
+
+** Performance
+Response time : 사용자 관점 총 실행시간
+latency : 지연
+execution time : 실행시간
+즉, Response time = latency + execution time 이다.
+
+따라서 성능은 실행시간이 짧을수록 좋으므로,
+Performance = 1/execution time으로 표현이 된다.
+만약, process A, B를 비교한다면
+PerformanceA/PerformanceB = executionB/executionA = n
+n<1 : B가 (1/n배) 더 Performance가 좋다.
+n=1 : 두 process의 Performance는 동일하다.
+n>1 : A가 더 n배 더 Performance가 좋다.
+
+Elapsed time : 시스템 관점 총 실행시간
+CPU time : CPU processing 걸린 시간
+CPU time(execution time) = user CPU time + system CPU time
+즉, Response time = latency + user CPU time + system CPU time 이다.
+
+calculate user CPU time
+Clock frequency(Clock rate) : Unit [Hz]
+Clock period : Unit [s]
+→ Clock frequency = 1 / Clock period
+총 user CPU 시간 = clock 당 CPU 사이클 수 * 사이클 당 시간
+→ cpu time = CPU Clock Cycles * Clock Cycle Time(Clock period) = CPU Clock Cycles / Clock frequency(Clock rate)
+즉, Response time = latency + CPU Clock Cycles * Clock Cycle Time + system CPU time 이다.
+
+CPI (clock Cycles Per Instruction) : 명령어당 사이클 수 ex) mul CPI : 4 -> MULT instruction의 사이클 수는 4이다.
+CPU Clock Cycles = CPI * Instructions -> superposition 관계이기에, 다른 명령어가 있어도 다 합하면 된다.
+Average CPI = total CPI / instructions
+즉, Response time = latency + CPI * Instructions * Clock Cycle Time + system CPU time이다.
+
+MIPS : Millions of Instructions Per Second (초당 처리할 수 있는 명령어 수 단위 : Millions -> MIPS)
+MIPS = Instructions / execution time * 10^6
