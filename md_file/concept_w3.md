@@ -14,7 +14,7 @@ one destination + Two sources
 add a, b, c # a = b + c
 ```
 
-**Pr-1**\
+**Pr-1**<br>
 Given the C code below, write the compiled MIPS code.
 
 ``` c
@@ -24,16 +24,16 @@ Given the C code below, write the compiled MIPS code.
 
 #### Using Register Operands
 
--   32 \* 32bit\
-    → why 32bit : reason why MIPS using Word size =\> 4byte = 32bit
--   **Temporary Registers** : `$t0` \~ `$t9` → 계산 시 임시로 사용하는
+-   32 * 32bit<br>
+    → why 32bit : reason why MIPS using Word size => 4byte = 32bit
+-   **Temporary Registers** : `$t0` ~ `$t9` → 계산 시 임시로 사용하는
     값들
-    -   `$t0`\~`$t7` : reg's 8--15\
-    -   `$t8`\~`$t9` : reg's 24--25
--   **Saved Registers** : `$s0` \~ `$s7` → 보존해야 하는 값들
-    -   `$s0`\~`$s7` : reg's 16--23
+    -   `$t0`~`$t7` : reg's 8--15<br>
+    -   `$t8`~`$t9` : reg's 24--25
+-   **Saved Registers** : `$s0` ~ `$s7` → 보존해야 하는 값들
+    -   `$s0`~`$s7` : reg's 16--23
 
-**Pr-2**\
+**Pr-2**<br>
 Given the C code below, write the compiled MIPS code (access variables
 via register operands).
 
@@ -72,7 +72,7 @@ add $s3, $s3, -4  # usually using loop memory access
 
 ### Practice Problems
 
-**Pr-3**\
+**Pr-3**<br>
 Given a 32-bit (4-byte) integer value `0x12345678` and memory address
 0--3, compare 'Big Endian' vs. 'Little Endian'.
 
@@ -138,7 +138,7 @@ $$
 
 **Negative value** → MSB = 1 (sign bit)
 
-**Example**\
+**Example**<br>
 -10 → 10 → 1010₂ → 1's: 0101 → 2's: 0110
 
 ------------------------------------------------------------------------
@@ -173,7 +173,7 @@ lh
 | Bitwise OR     | \|   | or          |
 | Bitwise NOT    | ~    | nor         |
 
--   **sll** : Shift Left Logical → ×2\
+-   **sll** : Shift Left Logical → ×2<br>
 -   **srl** : Shift Right Logical → ÷2
 
 **Example -- AND**
@@ -269,8 +269,8 @@ while (save[i] == k)
     0x1024 | h = add(4,7)
     0x1028 | ...
 
-→ 주소 1024에서 `jal func` 실행 → 0004로 이동\
-→ `$ra = 1028`을 가리킴\
+→ 주소 1024에서 `jal func` 실행 → 0004로 이동<br>
+→ `$ra = 1028`을 가리킴<br>
 → 0004 → 0008 → 000C → `jr $ra`로 복귀 (1028)
 
 ------------------------------------------------------------------------
@@ -283,11 +283,11 @@ while (save[i] == k)
   ---- ---- ---- ---- ------- -------
   6    5    5    5    5       6
 
--   `op` : opcode (R-format에서는 항상 0)\
--   `rs` : first source register\
--   `rt` : second source register\
--   `rd` : destination register\
--   `shamt` : shift amount\
+-   `op` : opcode (R-format에서는 항상 0)<br>
+-   `rs` : first source register<br>
+-   `rt` : second source register<br>
+-   `rd` : destination register<br>
+-   `shamt` : shift amount<br>
 -   `funct` : function code (extension opcode)
 
 **Example — R-format (`add $t0, $s1, $s2`)**
@@ -308,8 +308,8 @@ while (save[i] == k)
   ---- ---- ---- ---------------------
   6    5    5    16
 
--   `rt`: destination or source register\
--   `constant`: 2\^-15 \~ 2\^15 - 1\
+-   `rt`: destination or source register<br>
+-   `constant`: 2\^-15 ~ 2\^15 - 1<br>
 -   `address`: offset added to base address in `rs`
 
 **Pr-7**
