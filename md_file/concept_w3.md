@@ -1,15 +1,9 @@
-* Instructions : Language of the Computer
+-   Instructions : Language of the Computer
 
-** Instruction SET
-*** Classification by types
-    - Arithmetic Instruction
-        one destination + Two sources
-        ex.
-            add a, b, c # a = b + c
-        Pr-1
-        Given the C code below, write the compiled MIPS code.
-            1) a = b + c + d;
-            2) f = (g + h) - (i + j);
+\*\* Instruction SET \*\*\* Classification by types - Arithmetic
+Instruction one destination + Two sources ex. add a, b, c \# a = b + c
+Pr-1 Given the C code below, write the compiled MIPS code. 1) a = b +
+c + d; 2) f = (g + h) - (i + j);
 
         Using Register Operands
             - 32 * 32bit
@@ -179,25 +173,15 @@
     - Floating Point Instructions
     - Pseudo Instructions
 
-*** Classification by formats
-    - R-format
-        | op | rs | rt | rd | shamt | funct |
-        ---
-        |6|5|5|5|5|6|
-        op      : operation code(opcode) -> always 0 in R-format
-        rs      : first source register number
-        rt      : second source register number
-        rd      : destination register number
-        shamt   : shift amout
-        funct   : function code (extension opcode)
-        ex)
-        add $t0, $s1, $2
-        |000000|$s1|$s2|$t0|0|add|
-        |000000|17|18|8|0|32|
-        |000000|10001|10010|01000|00000|100000|
-        |00000010001100100100000000100000|
-        |0000 0010 0011 0010 0100 0000 0010 0000|
-        |02324020_16|
+\*\*\* Classification by formats - R-format \| op \| rs \| rt \| rd \|
+shamt \| funct \| --- \|6\|5\|5\|5\|5\|6\| op : operation code(opcode)
+-\> always 0 in R-format rs : first source register number rt : second
+source register number rd : destination register number shamt : shift
+amout funct : function code (extension opcode) ex) add \$t0, \$s1,
+$2  |000000|$s1\|$s2|$t0\|0\|add\| \|000000\|17\|18\|8\|0\|32\|
+\|000000\|10001\|10010\|01000\|00000\|100000\|
+\|00000010001100100100000000100000\| \|0000 0010 0011 0010 0100 0000
+0010 0000\| \|02324020_16\|
 
     - I-format
         | op | rs | rt | constant or address |
