@@ -128,7 +128,8 @@ A[12] = h + A[8];  // h in $s2, base address of A in $s3
 ### 2's Complement Signed Integers
 
 $$x = -x_{n-1}2^{n-1} + x_{n-2}2^{n-2} + ... + x_0 2^0$$
-The range is \( -2^{(n-1)} \sim 2^{(n-1)} - 1 \).
+
+**The range is** \( -2^{(n-1)} \sim 2^{(n-1)} - 1 \).
 
 **Negative value** → MSB = 1 (sign bit)
 
@@ -159,14 +160,13 @@ lh
 ------------------------------------------------------------------------
 
 ### Logical Instructions
-
-  Operation     C      MIPS
-  ------------- ------ -----------
-  Shift Left    \<\<   sll
-  Shift Right   \>\>   srl
-  Bitwise AND   &      and, andi
-  Bitwise OR    \|     or
-  Bitwise NOT   \~     nor
+| Operation     | C    | MIPS        |
+|----------------|------|-------------|
+| Shift Left     | <<   | sll         |
+| Shift Right    | >>   | srl         |
+| Bitwise AND    | &    | and, andi   |
+| Bitwise OR     | \|   | or          |
+| Bitwise NOT    | ~    | nor         |
 
 -   **sll** : Shift Left Logical → ×2\
 -   **srl** : Shift Right Logical → ÷2
