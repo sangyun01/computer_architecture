@@ -45,13 +45,13 @@ via register operands).
 
 ### Memory Instructions
 
--   Using Memory Operands\
--   Arithmetic Operations require Data Transfer Instructions\
+-   Using Memory Operands
+-   Arithmetic Operations require Data Transfer Instructions
 -   To access memory, need memory address
 
 #### Endian
 
--   **Big Endian** : MSB → low, LSB → high\
+-   **Big Endian** : MSB → low, LSB → high
 -   **Little Endian** : LSB → low, MSB → high
 
 #### Memory Operand
@@ -76,37 +76,40 @@ add $s3, $s3, -4  # usually using loop memory access
 Given a 32-bit (4-byte) integer value `0x12345678` and memory address
 0--3, compare 'Big Endian' vs. 'Little Endian'.
 
-  address   Big   Little
-  --------- ----- --------
-  0         12    78
-  1         34    56
-  2         56    34
-  3         78    12
+| Address | Big | Little |
+|----------|-----|--------|
+| 0 | 12 | 78 |
+| 1 | 34 | 56 |
+| 2 | 56 | 34 |
+| 3 | 78 | 12 |
 
-**Pr-4**\
-Value = `0x34125678`, memory address 0--3
+**Pr-4**  
+Value = `0x34125678`, memory address 0–3  
 
-  address   Big   Little
-  --------- ----- --------
-  0         34    78
-  1         12    56
-  2         56    12
-  3         78    34
+| Address | Big | Little |
+|----------|-----|--------|
+| 0 | 34 | 78 |
+| 1 | 12 | 56 |
+| 2 | 56 | 12 |
+| 3 | 78 | 34 |
 
-**Pr-4'**\
-Two consecutive 32-bit integer values (`0x12345678` and `0x34125678`)
-stored in address 0--7.
+---
 
-  address   Big   Little
-  --------- ----- --------
-  0         12    78
-  1         34    56
-  2         56    34
-  3         78    12
-  4         34    78
-  5         12    56
-  6         56    12
-  7         78    34
+**Pr-4′**  
+Two consecutive 32-bit integer values (`0x12345678` and `0x34125678`)  
+stored in address 0–7.  
+
+| Address | Big | Little |
+|----------|-----|--------|
+| 0 | 12 | 78 |
+| 1 | 34 | 56 |
+| 2 | 56 | 34 |
+| 3 | 78 | 12 |
+| 4 | 34 | 78 |
+| 5 | 12 | 56 |
+| 6 | 56 | 12 |
+| 7 | 78 | 34 |
+
 
 **Pr-5**
 
@@ -125,8 +128,8 @@ A[12] = h + A[8];  // h in $s2, base address of A in $s3
 ### 2's Complement Signed Integers
 
 $$x = -x_{n-1}2^{n-1} + x_{n-2}2^{n-2} + ... + x_0 2^0$$
+The range is \( -2^{(n-1)} \sim 2^{(n-1)} - 1 \).
 
-**Range** : -2\^(n-1) \~ 2\^(n-1) - 1\
 **Negative value** → MSB = 1 (sign bit)
 
 **Example**\
@@ -282,15 +285,17 @@ while (save[i] == k)
 -   `shamt` : shift amount\
 -   `funct` : function code (extension opcode)
 
-**Example**
+**Example — R-format (`add $t0, $s1, $s2`)**
 
-    add $t0, $s1, $s2
-    |000000|$s1|$s2|$t0|0|add|
-    |000000|17|18|8|0|32|
-    |000000|10001|10010|01000|00000|100000|
-    |00000010001100100100000000100000|
-    |0000 0010 0011 0010 0100 0000 0010 0000|
-    |02324020_16|
+| 구분 | 내용 |
+|------|------|
+| Instruction | `add $t0, $s1, $s2` |
+| Field 구분 | \|000000\|$s1\|$s2\|$t0\|0\|add\| |
+| Field (10진수) | \|000000\|17\|18\|8\|0\|32\| |
+| Field (2진수) | \|000000\|10001\|10010\|01000\|00000\|100000\| |
+| 전체 비트열 | 00000010001100100100000000100000 |
+| 4비트 구분 | 0000 0010 0011 0010 0100 0000 0010 0000 |
+| 16진수 표현 | 0x02324020 |
 
 #### I-format
 
