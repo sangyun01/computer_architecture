@@ -1,0 +1,110 @@
+* Instructions : Language of the Computer
+
+** Instruction SET
+*** Classification by types
+    - Arithmetic Instruction
+        one destination + Two sources
+        ex.
+            add a, b, c # a = b + c
+        Pr-1
+        Given the C code below, write the compiled MIPS code.
+            1) a = b + c + d;
+            2) f = (g + h) - (i + j);
+
+        Using Register Operands
+            - 32 * 32bit
+                -> why 32bit : reason why MIPS using Word size => 4byte = 32bit
+            - Temporary Registers   : $t0 ~ $t9 -> 계산을 하는데 있어 임시로 사용하는 값들
+            - Saved Registers       : $s0 ~ $s7 -> 보존을 해야하는 값들
+        Pr-2
+        Given the C code below, write the compiled MIPS code.(access variables via register operands)
+            1) f = (g + h) - (i + j); # f, g, h, i, j  stored in $s0, .. $s4
+        
+    - Memory Instructions
+        - Using Memory Operands
+        - Arithmetic Operations require Data Transfer Instructions
+        - To access memory, need memory address
+        - Endian
+            - Big Endian : MSB -> low, LSB -> high
+            - Little Endian : LSB -> low, MSB -> high
+        - Memory operands(Three) : destination, offset, base address
+            lw dest, offset(base address)
+        - Immediate operands 
+            add $s3, $s3, -4 -> usually using loop memory access
+            $zero means 0 -> usually using data copy
+
+        Pr-3
+        Given a 32-bit (4-byte) integer value in hexadecimal 0x12345678 and the memory address 0-3,
+        compare the values stored in each address in ‘Big Endian’ vs. ‘Little Endian’.
+        | address | Big | Little |
+        ---
+        | 0 | 12 | 78 |
+        | 1 | 34 | 56 |
+        | 2 | 56 | 34 |
+        | 3 | 78 | 12 |
+
+        Pr-4
+        Given a 32-bit (4-byte) integer value in hexadecimal 0x34125678 and the memory address 0-3,
+        compare the values stored in each address in ‘Big Endian’ vs. ‘Little Endian’.
+        | address | Big | Little |
+        ---
+        | 0 | 34 | 78 |
+        | 1 | 12 | 56 |
+        | 2 | 56 | 12 |
+        | 3 | 78 | 34 |
+
+        Pr-4'
+        Given two consecutive 32-bit (4-byte) integer values in hexadecimal 
+        0x12345678 and 0x34125678 stored sequentially in memory addresses 0–7, 
+        compare the values stored in each address in ‘Big Endian’ vs. ‘Little Endian’.
+        | address | Big | Little |
+        ---
+        | 0 | 12 | 78 |
+        | 1 | 34 | 56 |
+        | 2 | 56 | 34 |
+        | 3 | 78 | 12 |
+        | 4 | 34 | 78 |
+        | 5 | 12 | 56 |
+        | 6 | 56 | 12 |
+        | 7 | 78 | 34 |
+
+        Pr-5
+        Given the C code
+        g = h + A[8];   # A is an array, g in $s1, h in $s2, the base address of A in $s3
+
+        Pr-6
+        Given the C code
+        A[12] = h + A[8];   # h in $s2, base address of A in $s3
+
+        2s' comlement Signed Integers
+        x = -x_n-1*2^(n-1) + x_n-2*2^(n-2) + .. +x_0*2^0
+        Range : -2^(n-1) ~ 2^(n-1) - 1
+        negative value -> MSB -> Signed bit -> 1 -> negative
+        negative value 값 확인하는 법
+        ex) -10
+        -10 -> 10 -> 1010_2 -> 1's : 0101_2 -> 2's : 0110_2
+
+        MIPS Instruction set
+            addi : extend immediate value
+            lb, lh, : extend loaded byte/halfword
+            beq, bne : extend the displacement
+
+        ex)
+        lb
+            2   -> 0000 0010 (02) => 0000 ... 0000 0010 (0x0000_0002)
+            -2  -> 1111 1110 (FE) => 1111 ... 1111 1110 (0xFFFF_FFFE)
+        lh
+            2   -> 0000 0000 0000 0010(0002) => 0000 ... 0000 0010 (0x0000_0002)
+            -2  -> 1111 1111 1111 1110(FFFE) => 1111 ... 1111 1110 (0xFFFF_FFFE)
+            
+    - Logical Instructions
+    - Conditional Instructions
+    - Branch / Jump Instructions
+    - Floating Point Instructions
+    - Pseudo Instructions
+
+*** Classification by formats
+    - R-format
+    - I-format
+    - J-format
+    - Floating Point Instructions format
