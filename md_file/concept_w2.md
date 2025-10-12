@@ -109,7 +109,7 @@ $\frac{\text{Performance}_X}{\text{Performance}_Y} = \frac{\text{Execution Time}
 |------|------|------|
 | **Elapsed Time** | 시스템 관점 | 프로그램 시작~종료까지 전체 시간 |
 | **CPU Time** | CPU 관점 | CPU가 실제 처리한 시간 |
-|  |  | $$ CPU\ Time = \text{User CPU Time} + \text{System CPU Time} $$ |
+|  |  | $CPU\ Time = \text{User CPU Time} + \text{System CPU Time}$ |
 
 따라서,
 
@@ -123,8 +123,8 @@ $\text{Response Time} = \text{Latency} + \text{User CPU Time} + \text{System CPU
 
 | 항목 | 단위 | 관계 |
 |------|------|------|
-| **Clock Frequency (Clock Rate)** | [Hz] | \( f = \frac{1}{T} \) |
-| **Clock Period** | [s] | \( T = \frac{1}{f} \) |
+| **Clock Frequency (Clock Rate)** | [Hz] | $f = \frac{1}{T}$ |
+| **Clock Period** | [s] | $T = \frac{1}{f}$ |
 
 ### CPU Time 계산식
 
