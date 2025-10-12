@@ -1,0 +1,78 @@
+* Arithmetic for Computers
+
+** Addition
+*** Dealing with Overflow
+    Adding positive and negative operands : None
+    Adding two positive operands : Overflow if result sign is 1
+        -> 양수 + 양수 결과의 부호 비트가 1(음수)이면 Overflow
+    Adding two negative operands : Overflow if result sign is 0
+        -> 음수 + 음수 결과의 부호 비트가 0(양수)이면 Overflow
+
+    ex) 7 + 6 = 13
+        0111 -> 7
+      + 0110 -> 6
+      ------
+        1101 -> 13
+    ex) 214783647 + 1 = -2 -> Overflow
+    ex) (-214783647) + (-214783647) = 0 -> Overflow
+
+    주의사항 : 연산시 32bit로 해야한다.
+    Overflow를 방지하려면 32bit + 32bit = 33bit로 한다.
+
+** Substraction
+Addition과 방법이 유사하다.
+    -> a - b = a + (-b)
+*** Dealing with Overflow
+    Substracting two positive operands : None
+    Substracting positive from negative operands : Overflow if result sign is 0
+        -> 음수 - 양수 결과의 부호 비트가 0(양수)이면 Overflow
+    Substracting negative from positive operands : Overflow if result sign is 1
+        -> 양수 - 음수 결과의 부호 비트가 1(음수)이면 Overflow
+즉 음수를 2의 보수로 변경하여 더하는 연산을 진행한다.
+    ex) 7 - 6 = 1
+        0111 -> 7 / 0110 = 6 -> 1001 = 6의 1의 보수 -> 1001 + 1 = 1010 = 6의 음수표현
+
+        0111 -> 7
+      + 1010 -> -6
+      ------
+      1|0001 -> 1  
+
+
+** Multiplication
+Two type -> 분리형, 결합형
+multiplicand / multiplier / product로 구성된다.
+product = multiplier * multiplicand 
+알고리즘 multiplier의 LSB가 1/0을 확인하고 -> 1이라면 multiplicand을 더하고, 0이라면 더하지 않는다. -> shift를 multiplicand는 left로, multiplier는 right로 진행한다. -> bit수만큼 반복한다.
+    ex) 1011(11) * 1100(12) = 10000100(132)
+        | |1st|2nd|3rd|4th|
+        | multiplier | 1011 | 10110 | 101100 | 1011000 |
+        | multiplicand | 1100 | 0110 | 0011 | 0001 |
+        | product | 0000 0000 | 0000 0000 | 0010 1100 | 1000 0100 |
+    
+    ex) 1000(8) * 1001(9) = 1001000(72) -> 분리형
+        | |1st|2nd|3rd|4th|
+        | multiplier | 1000 | 10000 | 100000 | 1000000 |
+        | multiplicand | 1001 | 0100 | 0010 | 0001 |
+        | product | 0000 1000 | 0000 1000 | 0000 1000 | 0100 1000 |
+
+    ex) 1000(8) * 1001(9) = 1001000(72) -> 결합형
+        | |1st|2nd|3rd|4th|
+        | multiplier | 1000 | 1000 | 1000 | 1000 |
+        | product | 0000 1001 -> 1000 1001 | 0100 0100 -> 0100 0100 | 0010 0010 -> 0010 0010 | 1001 0001 -> 0100 1000 |
+
+
+    주의사항 : 항상 연산 후에 shift를 진행한다.
+
+** Division
+Dividend = Quotient * Divisor + Remainder
+나누기 연산의 경우 제수(Divisor)와 피제수(Dividend)의 부호가 동일해야한다.
+    ex) 1001010 / 1000
+    | |1st|2nd|3rd|4th|
+    Remainder | 0100 1010 | 0100 1010 -> 0000 1010 | 0000 1010 | 0000 1010 | 0000 1010 -> 0000 0010 |
+    Divisor | 1000 0000 | 0100 0000 | 0010 0000 | 0001 0000 | 0000 1000 |
+    Quotient | 0000(neg) | 0001(pos) | 0010(neg) | 0100(neg) | 1001(pos) |
+
+    Remainder -> 0000 0010
+    Divisor ->1000
+    Quotient -> 1001
+   

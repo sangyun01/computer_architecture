@@ -4,17 +4,12 @@
 
 - **Definition of Response Time (Latency, Execution Time)**
 
-$$
-\text{Performance}_X = \frac{1}{\text{Execution Time}_X}
-$$
+$\text{Performance}_X = \frac{1}{\text{Execution Time}_X}$
 
 - **Relative Performance Comparison**  
 When comparing two systems \(X\) and \(Y\):
 
-$$
-\frac{\text{Performance}_X}{\text{Performance}_Y} 
-= \frac{\text{Execution Time}_Y}{\text{Execution Time}_X}
-$$
+$\frac{\text{Performance}_X}{\text{Performance}_Y} = \frac{\text{Execution Time}_Y}{\text{Execution Time}_X}$
 
 ---
 
@@ -22,9 +17,7 @@ $$
 
 - **Definition**
 
-$$
-\text{CPU Time} = \text{User CPU Time} + \text{System CPU Time}
-$$
+$\text{CPU Time} = \text{User CPU Time} + \text{System CPU Time}$
 
 - **Explanation**
   - *User CPU Time*: User mode, running actual instructions of the program  
@@ -37,15 +30,11 @@ $$
 
 - **Clock Frequency and Period**
 
-$$
-\text{Clock Frequency} = \frac{1}{\text{Clock Period}}
-$$
+$\text{Clock Frequency} = \frac{1}{\text{Clock Period}}$
 
 - **Execution Time (= User CPU Time)**
 
-$$
-\text{CPU Time} = \text{CPU Clock Cycles} \times \text{Clock Cycle Time}
-$$
+$\text{CPU Time} = \text{CPU Clock Cycles} \times \text{Clock Cycle Time}$
 
 > 총 CPU 작동시간 = 총 CPU 사이클 × 사이클 당 소요시간
 
@@ -61,34 +50,21 @@ $$
 
 - **If each instruction has different cycles**
 
-$$
-\text{Clock Cycles} = \sum_i ( \text{CPI}_i \times \text{Instruction Count}_i )
-$$
+$\text{Clock Cycles} = \sum_i ( \text{CPI}_i \times \text{Instruction Count}_i )$
 
 - **Conclusion**
 
-$$
-\text{CPU Time} 
-= \text{Instruction Count} \times \text{CPI} \times \text{Clock Cycle Time}
-= \frac{\text{Instruction Count} \times \text{CPI}}{\text{Clock Rate}}
-$$
+$\text{CPU Time} = \text{Instruction Count} \times \text{CPI} \times \text{Clock Cycle Time} = \frac{\text{Instruction Count} \times \text{CPI}}{\text{Clock Rate}}$
 
 Or in ratio form:
 
-$$
-= \left(\frac{\text{Instructions}}{\text{Program}}\right) 
-\times \left(\frac{\text{Clock Cycles}}{\text{Instruction}}\right) 
-\times \left(\frac{\text{Seconds}}{\text{Clock Cycle}}\right)
-$$
+$= \left(\frac{\text{Instructions}}{\text{Program}}\right) \times \left(\frac{\text{Clock Cycles}}{\text{Instruction}}\right) \times \left(\frac{\text{Seconds}}{\text{Clock Cycle}}\right)$
 
 ---
 
 ## 5. Amdahl's Law (Pitfall)
 
-$$
-T_{\text{improved}} 
-= \frac{T_{\text{affected}}}{\text{Improvement Factor}} + T_{\text{unaffected}}
-$$
+$T_{\text{improved}} = \frac{T_{\text{affected}}}{\text{Improvement Factor}} + T_{\text{unaffected}}$
 
 ---
 
@@ -96,11 +72,7 @@ $$
 
 - **Definition**
 
-$$
-\text{MIPS} 
-= \frac{\text{Instruction Count}}{\text{Execution Time} \times 10^6}
-= \frac{\text{Clock Rate}}{\text{CPI} \times 10^6}
-$$
+$\text{MIPS} = \frac{\text{Instruction Count}}{\text{Execution Time} \times 10^6} = \frac{\text{Clock Rate}}{\text{CPI} \times 10^6}$
 
 - **Meaning**: The number of million instructions executed per second.
 
