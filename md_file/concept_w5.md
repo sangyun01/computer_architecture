@@ -23,6 +23,7 @@
 | 64bit | 1023 | actual exponent = Exponent - Bias |
 
 즉, $Exponent = actual\ exponent + Bias$
+
 ---
 
 ### Fraction
