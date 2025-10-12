@@ -45,8 +45,8 @@ $\text{CPU Time} = \text{CPU Clock Cycles} \times \text{Clock Cycle Time}$
 - **Definition**: Average number of cycles each instruction requires
 
 - **Using the concept of CPI**  
-  - \( \text{CPU Time} = \text{CPU Clock Cycles} \times \text{Clock Cycle Time} \)  
-  - \( \text{CPU Clock Cycles} = \text{Instruction Count} \times \text{CPI} \)
+  - $\text{CPU Time} = \text{CPU Clock Cycles} \times \text{Clock Cycle Time}$  
+  - $\text{CPU Clock Cycles} = \text{Instruction Count} \times \text{CPI}$
 
 - **If each instruction has different cycles**
 
