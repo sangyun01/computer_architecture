@@ -87,22 +87,15 @@
 | **Latency** | 지연 시간 |
 | **Execution time** | 실제 실행 시간 |
 
-$$
-\text{Response Time} = \text{Latency} + \text{Execution Time}
-$$
+$\text{Response Time} = \text{Latency} + \text{Execution Time}$
 
 - 성능은 **실행시간이 짧을수록** 좋음  
 
-$$
-\text{Performance} = \frac{1}{\text{Execution Time}}
-$$
+$\text{Performance} = \frac{1}{\text{Execution Time}}$
 
 ### 프로세스 간 비교
 
-$$
-\frac{\text{Performance}_X}{\text{Performance}_Y}
-= \frac{\text{Execution Time}_Y}{\text{Execution Time}_X}
-$$
+$\frac{\text{Performance}_X}{\text{Performance}_Y} = \frac{\text{Execution Time}_Y}{\text{Execution Time}_X}$
 
 - \( n < 1 \): Y가 (1/n)배 더 성능이 좋다.  
 - \( n = 1 \): 두 프로세스의 성능이 동일하다.  
@@ -120,9 +113,7 @@ $$
 
 따라서,
 
-$$
-\text{Response Time} = \text{Latency} + \text{User CPU Time} + \text{System CPU Time}
-$$
+$\text{Response Time} = \text{Latency} + \text{User CPU Time} + \text{System CPU Time}$
 
 ---
 
@@ -137,21 +128,15 @@ $$
 
 ### CPU Time 계산식
 
-$$
-\text{CPU Time} = \text{CPU Clock Cycles} \times \text{Clock Cycle Time}
-$$
+$\text{CPU Time} = \text{CPU Clock Cycles} \times \text{Clock Cycle Time}$
 
 또는
 
-$$
-\text{CPU Time} = \frac{\text{CPU Clock Cycles}}{\text{Clock Frequency}}
-$$
+$\text{CPU Time} = \frac{\text{CPU Clock Cycles}}{\text{Clock Frequency}}$
 
 따라서,
 
-$$
-\text{Response Time} = \text{Latency} + \text{CPU Clock Cycles} \times \text{Clock Cycle Time} + \text{System CPU Time}
-$$
+$\text{Response Time} = \text{Latency} + \text{CPU Clock Cycles} \times \text{Clock Cycle Time} + \text{System CPU Time}$
 
 ---
 
@@ -160,21 +145,15 @@ $$
 - 명령어 1개를 실행하는 데 필요한 평균 클록 사이클 수  
 - 예: `mul` 명령어의 CPI = 4  
 
-$$
-\text{CPU Clock Cycles} = \text{CPI} \times \text{Instructions}
-$$
+$\text{CPU Clock Cycles} = \text{CPI} \times \text{Instructions}$
 
 여러 명령어의 합은 **superposition**으로 더할 수 있다.  
 
-$$
-\text{Average CPI} = \frac{\text{Total CPI}}{\text{Instructions}}
-$$
+$\text{Average CPI} = \frac{\text{Total CPI}}{\text{Instructions}}$
 
 따라서,
 
-$$
-\text{Response Time} = \text{Latency} + \text{CPI} \times \text{Instructions} \times \text{Clock Cycle Time} + \text{System CPU Time}
-$$
+$\text{Response Time} = \text{Latency} + \text{CPI} \times \text{Instructions} \times \text{Clock Cycle Time} + \text{System CPU Time}$
 
 ---
 
@@ -182,9 +161,7 @@ $$
 
 > 초당 실행 가능한 명령어 수 (단위: 백만 개, Million)
 
-$$
-\text{MIPS} = \frac{\text{Instructions}}{\text{Execution Time} \times 10^6}
-$$
+$\text{MIPS} = \frac{\text{Instructions}}{\text{Execution Time} \times 10^6}$
 
 - CPU가 1초에 몇 백만 개의 명령어를 처리할 수 있는지를 나타냄.  
 - 값이 높을수록 일반적으로 빠르지만, ISA별 명령 복잡도에 따라 실제 성능 비교에는 한계가 있음.
