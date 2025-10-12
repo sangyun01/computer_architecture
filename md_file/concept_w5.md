@@ -22,13 +22,11 @@
 | 32bit | 127 | actual exponent = Exponent - Bias |
 | 64bit | 1023 | actual exponent = Exponent - Bias |
 
-즉,  
-\( Exponent = actual\ exponent + Bias \)
-
+즉, $Exponent = actual\ exponent + Bias$
 ---
 
 ### Fraction
-- Normalized range: **1.0 ~ 2.0** → 즉 **1.~~**로 시작하는 수이다.
+- Normalized range: **1.0 ~ 2.0** → 즉 **1.XX**로 시작하는 수이다.
 
 | Example | Normalized form |
 |----------|-----------------|
